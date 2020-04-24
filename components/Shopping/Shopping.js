@@ -21,15 +21,24 @@ class Shopping {
                 sumCatalog += Number(price);
             }
         });
+        let activeText = '';
+        let activeSum = '';
+        if(sumCatalog === 0) {
+            activeText = 'Корзина пуста';
+            activeSum = '';
+        } else {
+            activeText = 'Сумма:'
+            activeSum = sumCatalog + ' USD';
+        }
         const html = `
             <div class="shopping-container">
                 <div class="shopping__close" onclick="shoppingPage.handleClear();"></div>
                 <table>
                    ${htmlCatalog} 
                    <tr>
-                        <td class="shopping-element__sum">Сумма:</td>
+                        <td class="shopping-element__sum">${activeText}</td>
                         <td></td>
-                        <td class="shopping-element__total">${sumCatalog.toLocaleString()} USD</td>
+                        <td class="shopping-element__total">${activeSum.toLocaleString()}</td>
                    </tr>
                 </table>
             </div>
